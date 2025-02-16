@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap" rel="stylesheet">
+	
+    <style>
+	
+	.envelope:hover {
+    transform: rotate(-2deg);
+    cursor: pointer;
+}
+
+.letter-content {
+    padding: 30px;
+    line-height: 1.8;
+    background-image: linear-gradient(
+        to bottom,
+        #fffaf0 0%,
+        #fffaf0 95%,
+        #e0d0b5 100%
+    );
+}
+
+.letter-content p {
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+	
+		@media (max-width: 768px) {
+			.title { font-size: 2.5em; }
+			.gallery { grid-template-columns: 1fr; }
+		}
+			
+		.loader {
+			  position: fixed;
+			  top: 0;
+			  left: 0;
+			  width: 100%;
+			  height: 100%;
+			  background: #ffe6f2;
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+			  z-index: 1000;
+			}
+
+			.heart-pulse {
+			  animation: pulse 1s infinite;
+			  font-size: 4em;
+			}
+
+			@keyframes pulse {
+			  0% { transform: scale(1); }
+			  50% { transform: scale(1.2); }
+			  100% { transform: scale(1); }
+			}
+	
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #ffe6f2;
+            color: #4a4a4a;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: linear-gradient(45deg, #ff99cc, #ff4d88);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hearts-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff4081;
+            animation: float 6s ease-in infinite;
+            opacity: 0;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Styles */
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4em;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            padding: 40px 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* Timeline Styles */
+        .timeline {
+            padding: 50px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            padding: 20px;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Love Note Styles */
+        .love-note {
+            text-align: center;
+            padding: 40px 20px;
+            background: #fff0f6;
+            margin: 40px 0;
+        }
+
+        .secret-message {
+            display: none;
+            padding: 20px;
+            background: white;
+            margin: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .secret-message.visible {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+		
+		/* Add this for lightbox customization */
+        .lb-data .lb-caption {
+            font-size: 1.2em;
+            line-height: 1.4em;
+            font-family: 'Dancing Script', cursive;
+            text-align: center;
+        }
+
+        .lb-nav a.lb-prev,
+        .lb-nav a.lb-next {
+            opacity: 0.9;
+        }
+
+        .lb-outerContainer {
+            background: #ffe6f2;
+        }
+		
+		.envelope {
+		  width: 300px;
+		  height: 200px;
+		  background: #ff99cc;
+		  margin: 20px auto;
+		  position: relative;
+		  cursor: pointer;
+		  transition: transform 0.3s;
+		}
+
+		.flap {
+		  border-left: 150px solid transparent;
+		  border-right: 150px solid transparent;
+		  border-bottom: 100px solid #ff4d88;
+		}
+
+		.letter-content {
+		  display: none;
+		  padding: 20px;
+		  background: #fff;
+		  max-width: 600px;
+		  margin: 0 auto;
+		  font-family: 'Dancing Script';
+		  font-size: 1.2em;
+		}
+
+		@keyframes openEnvelope {
+		  0% { transform: rotateX(0deg); }
+		  100% { transform: rotateX(180deg); }
+		}
+		
+	/* Envelope Styling */
+    .envelope-container {
+        position: relative;
+        max-width: 300px;
+        margin: 40px auto;
+    }
+
+    .envelope {
+        background: #f5e6d3 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==');
+        border: 2px solid #d4b483;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        position: relative;
+        z-index: 1;
+    }
+
+    .envelope-label {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: 'Dancing Script', cursive;
+        font-size: 1.5em;
+        color: #6b4b2e;
+        z-index: 2;
+        text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+    }
+
+    .flap {
+        border-bottom-color: #d4b483;
+        transition: all 0.5s ease;
+        transform-origin: top center;
+    }
+
+    .envelope.active .flap {
+        transform: rotateX(180deg);
+    }
+
+    .envelope::after {
+        content: '';
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        bottom: -10px;
+        left: -10px;
+        background: rgba(214, 191, 157, 0.1);
+        border-radius: 5px;
+        z-index: -1;
+    }
+
+    /* Letter Styling */
+    .letter-content {
+        background: #fffaf0;
+        border: 1px solid #e0d0b5;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        position: relative;
+        display: none;
+    }
+
+    .letter-content::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, transparent 95%, rgba(0,0,0,0.05) 100%);
+        pointer-events: none;
+    }
+
+    .letter-content p {
+        font-family: 'Caveat', cursive;
+        font-size: 1.4em;
+        line-height: 1.6;
+        color: #5a4a3a;
+    }
+
+    .letter-stamp {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 60px;
+        opacity: 0.8;
+    }
+
+		.open-envelope {
+		  animation: openEnvelope 1s forwards;
+		}
+		
+		    /* Album Section Styles */
+		.albums-container {
+			padding: 40px 20px;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.album {
+			background: white;
+			border-radius: 15px;
+			margin: 20px 0;
+			box-shadow: 0 4px 15px rgba(255, 77, 136, 0.1);
+			overflow: hidden;
+			transition: all 0.3s ease;
+		}
+
+		.album-header {
+			padding: 20px;
+			background: linear-gradient(135deg, #ff99cc, #ff4d88);
+			color: white;
+			cursor: pointer;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.album-title {
+			font-family: 'Dancing Script', cursive;
+			font-size: 2em;
+			margin: 0;
+		}
+
+		.album-date {
+			font-size: 0.9em;
+			opacity: 0.9;
+		}
+
+		.album-collapse-icon {
+			font-size: 1.5em;
+			transition: transform 0.3s ease;
+		}
+
+		.album-content {
+			display: none;
+			padding: 20px;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 15px;
+			background: #fff5f9;
+		}
+
+		.album.active .album-content {
+			display: grid;
+		}
+
+		.album.active .album-collapse-icon {
+			transform: rotate(180deg);
+		}
+
+		.album-photo {
+			position: relative;
+			border-radius: 10px;
+			overflow: hidden;
+			transition: transform 0.3s ease;
+		}
+
+		.album-photo img {
+			width: 100%;
+			height: 200px;
+			object-fit: cover;
+			transition: transform 0.3s ease;
+		}
+
+		.album-photo:hover img {
+			transform: scale(1.1);
+		}
+
+		.album-photo::after {
+			content: attr(data-caption);
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: rgba(0, 0, 0, 0.6);
+			color: white;
+			padding: 8px;
+			font-size: 0.9em;
+			text-align: center;
+			transform: translateY(100%);
+			transition: transform 0.3s ease;
+		}
+
+		.album-photo:hover::after {
+			transform: translateY(0);
+		}
+		
+		.album[data-album-type="her"] .album-header {
+			background: linear-gradient(135deg, #ff66b3, #ff1a75);
+		}
+
+		.album[data-album-type="her"] .album-photo::after {
+			background: rgba(255, 102, 179, 0.9);
+		}
+
+		.album[data-album-type="her"] .album-title::after {
+			content: ' 💝';
+		}
+		
+		/* Modified Album Photo Styles */
+        .album-photo {
+            display: block;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .album-photo:hover {
+            transform: scale(1.03);
+        }
+
+        .album-photo img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .album-photo:hover img {
+            transform: scale(1.1);
+        }
+
+        .album-photo::after {
+            content: attr(data-caption);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 8px;
+            font-size: 0.9em;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .album-photo:hover::after {
+            transform: translateY(0);
+        }
+		
+		/* Secret Message Button Styles */
+		.secret-button {
+			background: #ff4081;
+			color: white;
+			border: none;
+			padding: 15px 30px;
+			border-radius: 30px;
+			font-size: 1.2em;
+			font-family: 'Dancing Script', cursive;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			box-shadow: 0 4px 15px rgba(255, 64, 129, 0.3);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.secret-button:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 6px 20px rgba(255, 64, 129, 0.4);
+			background: #ff1a75;
+		}
+
+		.secret-button:active {
+			transform: translateY(1px);
+		}
+
+		.secret-button::before {
+			content: '❤️';
+			position: absolute;
+			left: -20px;
+			transition: all 0.3s ease;
+			opacity: 0;
+		}
+
+		.secret-button:hover::before {
+			left: 10px;
+			opacity: 1;
+		}
+
+		.secret-button::after {
+			content: '❤️';
+			position: absolute;
+			right: -20px;
+			transition: all 0.3s ease;
+			opacity: 0;
+		}
+
+		.secret-button:hover::after {
+			right: 10px;
+			opacity: 1;
+		}
+
+		/* Heart Animation Styles */
+		.heart-animation {
+			position: fixed;
+			pointer-events: none;
+			animation: heartFloat 1.5s ease-out forwards;
+		}
+
+		@keyframes heartFloat {
+			0% {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
+			100% {
+				opacity: 0;
+				transform: translateY(-100px) scale(0.5);
+			}
+		}
+		
+		.letter-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+    </style>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+
+</head>
+<body>
+	<div class="countdown">
+	  <h3>Countdown to Our Next Anniversary</h3>
+	  <div id="countdown-timer"></div>
+	</div>
+	
+	<div class="loader">
+		<div class="heart-pulse">❤️</div>
+	</div>
+
+    <!-- Floating Hearts Container -->
+    <div class="hearts-container" id="hearts"></div>
+
+    <!-- Header Section -->
+    <header class="header">
+        <h1 class="title">Our Love Story</h1>
+        <p class="subtitle">Forever and Always ❤️</p>
+    </header>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <a href="Images/1.jpg" data-lightbox="our-memories" data-title="Our first trip ❤️" class="gallery-item">
+            <img src="Images/1_thumb.jpg" alt="Our Memory">
+        </a>
+        <a href="Images/2.jpg" data-lightbox="our-memories" data-title="Celebrating 1 year!" class="gallery-item">
+            <img src="Images/2_thumb.jpg" alt="Special Moment">
+        </a>
+        <!-- Add more images following the same pattern -->
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline">
+        <div class="timeline-item">
+            <h3>First Meeting 💘</h3>
+            <p>The day our eyes first met...</p>
+            <small>Date: [January 2022]</small>
+        </div>
+        <!-- Add more timeline items -->
+    </section>
+	
+<section class="love-letter">
+    <div class="envelope-container">
+        <div class="envelope" onclick="toggleLetter()">
+            <div class="flap"></div>
+            <div class="envelope-label">Second Anniversary Letter</div>
+        </div>
+    </div>
+    <div class="letter-content">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c8TV1mAAAAG3RSTlNAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAvEOaOAAABVklEQVR4XpWWB67c2BUFb3g557T/hRo9/WUMZHlgr4Bg8Z4qQgQJlHI4A8SzFVrapvmTF9O7dmYRFZ60YiBhJRCgh1FYhiLAmdvX0CzTOpNE77ME0Zty/nWWzchDtiqrmQDeuv3powQ5ta2eN0FY0InkqDD73lT9c9lEzwUNqgFHs9VQce3TVClFCQrSTfOiYkVJQBmpbq2L6iZavPnAPcoU0dSw0SUTqz/GtrGuXfbyyBniKykOWQWGqwwMA7QiYAxi+IlPdqo+hYHnUt5ZPfnsHJyNiDtnpJyayNBkF6cWoYGAMY92U2hXHF/C1M8uP/ZtYdiuj26UdAdQQSXQErwSOMzt/XWRWAz5GuSBIkwG1H3FabJ2OsUOUhGC6tK4EMtJO0ttC6IBD3kM0ve0tJwMdSfjZo+EEISaeTr9P3wYtGjXKygN2TYvpxp7XDmFokwx3WGEDUQYAAAAAElFTkSuQmCC" 
+             class="letter-stamp" alt="Wax Seal">
+        <p>My Dearest Mahal </p>
+		<p>Happy 2nd Anniversary Mahal ko, sana magusto mo mga regalo ko para sa'yo. Sorry kung ito lang ang maibibigay ko ngayon Anniversary natin. Yan lang kasi kinaya ng budget. Alam ko marami pa ko pagkukulang at marami din ako nagawang kasalanan sa'yo. Pero sinisikap ko na maka bawi sayo. Super simple lang ng gift ko pero sana magustohan mo mahal  . Two years ago sinagot mo ako sa taas ng Ferris Wheel, naalala ko pa yung time  na kasama kita sa taas kasabay ng sunset, sinagot mo ako sa panliligaw ko sa'yo. 
+		We've had our share of ups and downs, yung mga panahon na marami tayo pinagdadaan, mga problema at mga away. Alam ko napaka rami kong pag kakamali na nagawa, yung mga panahon na nasaktan kita at nagalit ka saken at mga maliliit na bagay na di ko magawa para sa'yo. Sa lahat ng yon pinili mo na mag stay, at bigyan ako ng pagkakataon, para mapakita ko na bumabawi sa'yo. I am so deeply grateful for your love, your patience, and your strength na kayanin lahat ng iyon. You make me want to be a better man, the man you deserve, and I promise to keep working to show just how much I cherish you. 
+		These 2 years na officially na naging tayo at mga buwan, linggo at araw na pinag samahan natin bago moko sagutin, pinakita mo kung gaano moko kamahal. You shown me that love is not just about the perfect momments. It's about standing together when things are hard, forgiving wheb it's painful, and choosing each other over and over again. And every day I choose you. 
+		Thank you for being my greatest blessing, mahal, my love, my enemy, my forever partner. I look forward forward to every beautiful momments we'll create together. Let's make this next year even more amazing than the last. Filled with more joy, more adventure, and a love that grows even deeper. 
+
+		Happy Anniversary, mahal ko. I love you more than words can ever say. 
+
+		I LOVE YOU! LABLAB
+
+		VinVin
+	</p>
+    </div>
+</section>
+	
+	<!-- Add to timeline section -->
+	<!--<div class="timeline-item">
+	  <h3>Our First Kiss 💋</h3>
+	  <p class="memory-content" style="display: none;">
+		That magical moment at [location]...
+		<img src="Images/kiss.jpg" alt="First kiss" class="memory-photo">
+	  </p>
+	  <button onclick="toggleMemory(this)" class="memory-toggle">Reveal Memory</button>
+	</div>
+	
+    <!-- Modified Album Section -->
+    <section class="albums-container">
+        <h2 style="text-align: center; font-family: 'Dancing Script'; font-size: 2.5em; margin-bottom: 30px;">
+            Our Special Memories
+        </h2>
+
+        <!-- Album 1 -->
+        <div class="album">
+            <div class="album-header" onclick="toggleAlbum(this)">
+                <div>
+                    <h3 class="album-title">US🌻</h3>
+                    <span class="album-date">MEMORIES • 13 Photos</span>
+                </div>
+                <span class="album-collapse-icon">▼</span>
+            </div>
+            <div class="album-content">
+                <a href="Images/Album1/1_A.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="Sunset walk" 
+                   class="album-photo">
+                    <img src="Images/Album1/1_A_thumb.jpg" alt="Sunset memory">
+                </a>
+                <a href="Images/Album1/2_B.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="Ice cream date" 
+                   class="album-photo">
+                    <img src="Images/Album1/2_B_thumb.jpg" alt="Ice cream memory">
+                </a>
+				<a href="Images/Album1/3_C.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="Ice cream date" 
+                   class="album-photo">
+                    <img src="Images/Album1/3_C_thumb.jpg" alt="Ice cream memory">
+                </a>
+				<a href="Images/Album1/4_D.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="Ice cream date" 
+                   class="album-photo">
+                    <img src="Images/Album1/4_D_thumb.jpg" alt="Ice cream memory">
+                </a>
+				<a href="Images/Album1/5_E.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="Ice cream date" 
+                   class="album-photo">
+                    <img src="Images/Album1/5_E_thumb.jpg" alt="Ice cream memory">
+                </a>
+				<a href="Images/Album1/6_F.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="Ice cream date" 
+                   class="album-photo">
+                    <img src="Images/Album1/6_F_thumb.jpg" alt="Ice cream memory">
+                </a>
+				<a href="Images/Album1/7_G.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="Ice cream date" 
+                   class="album-photo">
+                    <img src="Images/Album1/7_G_thumb.jpg" alt="Ice cream memory">
+                </a>		
+				
+				<a href="Images/Album1/10_J.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="Ice cream date" 
+                   class="album-photo">
+                    <img src="Images/Album1/10_J_thumb.jpg" alt="Ice cream memory">
+                </a>
+				<a href="Images/Album1/11_K.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="Ice cream date" 
+                   class="album-photo">
+                    <img src="Images/Album1/11_K_thumb.jpg" alt="Ice cream memory">
+                </a>
+				<a href="Images/Album1/12_L.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="Ice cream date" 
+                   class="album-photo">
+                    <img src="Images/Album1/12_L_thumb.jpg" alt="Ice cream memory">
+                </a>
+				<a href="Images/Album1/13_M.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="Ice cream date" 
+                   class="album-photo">
+                    <img src="Images/Album1/13_M_thumb.jpg" alt="Ice cream memory">
+                </a>
+				<a href="Images/Album1/14_N.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="Ice cream date" 
+                   class="album-photo">
+                    <img src="Images/Album1/14_N_thumb.jpg" alt="Ice cream memory">
+                </a>
+				<a href="Images/Album1/15_O.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="Ice cream date" 
+                   class="album-photo">
+                    <img src="Images/Album1/15_O_thumb.jpg" alt="Ice cream memory">
+                </a>
+                <!-- Add more photos -->
+            </div>
+        </div>
+
+        <!-- Album 2 -->
+        <div class="album">
+            <div class="album-header" onclick="toggleAlbum(this)">
+                <div>
+                    <h3 class="album-title">RANDOM PICTURES OF YOU❄️</h3>
+                    <span class="album-date">12 Photos</span>
+                </div>
+                <span class="album-collapse-icon">▼</span>
+            </div>
+			<div class="album-content">
+			  <a href="Images/Album2/1.jpg" data-lightbox="our-memories" data-title="First snow together" class="album-photo">
+				  <img src="Images/Album2/1_thumb.jpg" alt="Winter memory">
+			  </a>
+			  <a href="Images/Album2/2.jpg" data-lightbox="our-memories" data-title="Cozy nights in" class="album-photo">
+				  <img src="Images/Album2/2_thumb.jpg" alt="Winter memory">
+			  </a>
+			  <a href="Images/Album2/3.jpeg" data-lightbox="our-memories" data-title="Cozy nights in" class="album-photo">
+				  <img src="Images/Album2/3_thumb.jpeg" alt="Winter memory">
+			  </a>
+			  <a href="Images/Album2/4.jpeg" data-lightbox="our-memories" data-title="Cozy nights in" class="album-photo">
+				  <img src="Images/Album2/4_thumb.jpeg" alt="Winter memory">
+			  </a>
+			  <a href="Images/Album2/5.gif" data-lightbox="our-memories" data-title="Cozy nights in" class="album-photo">
+				  <img src="Images/Album2/5_thumb.gif" alt="Winter memory">
+			  </a>
+			  <a href="Images/Album2/6.jpeg" data-lightbox="our-memories" data-title="Cozy nights in" class="album-photo">
+				  <img src="Images/Album2/6_thumb.jpeg" alt="Winter memory">
+			  </a>
+			  <a href="Images/Album2/7.jpg" data-lightbox="our-memories" data-title="Cozy nights in" class="album-photo">
+				  <img src="Images/Album2/7_thumb.jpg" alt="Winter memory">
+			  </a>
+			  <a href="Images/Album2/8.jpg" data-lightbox="our-memories" data-title="Cozy nights in" class="album-photo">
+				  <img src="Images/Album2/8_thumb.jpg" alt="Winter memory">
+			  </a>
+			  <a href="Images/Album2/9.jpg" data-lightbox="our-memories" data-title="Cozy nights in" class="album-photo">
+				  <img src="Images/Album2/9_thumb.jpg" alt="Winter memory">
+			  </a>
+			  <a href="Images/Album2/10.jpg" data-lightbox="our-memories" data-title="Cozy nights in" class="album-photo">
+				  <img src="Images/Album2/10_thumb.jpg" alt="Winter memory">
+			  </a>
+			</div>
+        </div>
+
+        <!-- Her Album -->
+        <div class="album" data-album-type="her">
+            <div class="album-header" onclick="toggleAlbum(this)">
+                <div>
+                    <h3 class="album-title">2025 Pictures 🌸</h3>
+                    <span class="album-date">Every Day • ∞ Photos</span>
+                </div>
+                <span class="album-collapse-icon">▼</span>
+            </div>
+            <div class="album-content">
+                <a href="Images/2025/1.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="My sunshine ☀️" 
+                   class="album-photo">
+                    <img src="Images/2025/1_thumb.jpg" alt="Her photo">
+                </a>
+                <a href="Images/2025/2.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="Angel on Earth 👼" 
+                   class="album-photo">
+                    <img src="Images/2025/2_thumb.jpg" alt="Her photo">
+                </a>
+                <a href="Images/2025/3.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="That smile 😊" 
+                   class="album-photo">
+                    <img src="Images/2025/3_thumb.jpg" alt="Her photo">
+                </a>
+                <a href="Images/2025/4.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="My everything 💖" 
+                   class="album-photo">
+                    <img src="Images/2025/4_thumb.jpg" alt="Her photo">
+                </a>
+				<a href="Images/2025/5.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="My everything 💖" 
+                   class="album-photo">
+                    <img src="Images/2025/5_thumb.jpg" alt="Her photo">
+                </a>
+				<a href="Images/2025/5.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="My everything 💖" 
+                   class="album-photo">
+                    <img src="Images/2025/5_thumb.jpg" alt="Her photo">
+                </a>
+				<a href="Images/2025/6.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="My everything 💖" 
+                   class="album-photo">
+                    <img src="Images/2025/6_thumb.jpg" alt="Her photo">
+                </a>
+				<a href="Images/2025/7.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="My everything 💖" 
+                   class="album-photo">
+                    <img src="Images/2025/7_thumb.jpg" alt="Her photo">
+                </a>
+				<a href="Images/2025/8.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="My everything 💖" 
+                   class="album-photo">
+                    <img src="Images/2025/8_thumb.jpg" alt="Her photo">
+                </a>
+				<a href="Images/2025/9.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="My everything 💖" 
+                   class="album-photo">
+                    <img src="Images/2025/9_thumb.jpg" alt="Her photo">
+                </a>
+				<a href="Images/2025/10.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="My everything 💖" 
+                   class="album-photo">
+                    <img src="Images/2025/10_thumb.jpg" alt="Her photo">
+                </a>
+				<a href="Images/2025/11.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="My everything 💖" 
+                   class="album-photo">
+                    <img src="Images/2025/11_thumb.jpg" alt="Her photo">
+                </a>
+				<a href="Images/2025/12.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="My everything 💖" 
+                   class="album-photo">
+                    <img src="Images/2025/12_thumb.jpg" alt="Her photo">
+                </a>
+				<a href="Images/2025/13.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="My everything 💖" 
+                   class="album-photo">
+                    <img src="Images/2025/13_thumb.jpg" alt="Her photo">
+                </a>
+				<a href="Images/2025/14.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="My everything 💖" 
+                   class="album-photo">
+                    <img src="Images/2025/14_thumb.jpg" alt="Her photo">
+                </a>
+				<a href="Images/2025/15.jpg" 
+                   data-lightbox="our-memories" 
+                   data-title="My everything 💖" 
+                   class="album-photo">
+                    <img src="Images/2025/15_thumb.jpg" alt="Her photo">
+                </a>
+            </div>
+        </div>
+    </section>
+
+		<!-- Secret Message Section -->
+		<div class="love-note">
+		  <button onclick="revealMessage()" class="secret-button">
+			❤️ Open Secret Message ❤️
+		  </button>
+		  <div id="secretMessage" class="secret-message">
+			<p>You mean the world to me... 🌍❤️</p>
+		  </div>
+		</div>
+		
+		<script>
+function toggleLetter() {
+    const envelope = document.querySelector('.envelope');
+    const letter = document.querySelector('.letter-content');
+    
+    envelope.classList.toggle('active');
+
+    if (envelope.classList.contains('active')) {
+        // Open envelope
+        letter.style.display = 'block';
+        letter.style.opacity = 0;
+        setTimeout(() => {
+            letter.style.opacity = 1;
+            letter.style.transition = 'opacity 0.5s ease-out';
+        }, 100);
+    } else {
+        // Close envelope
+        letter.style.opacity = 0;
+        setTimeout(() => {
+            letter.style.display = 'none';
+        }, 500);
+    }
+}
+		</script>
+	
+	<script>
+        // Lightbox configuration (keep this as is)
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            'alwaysShowNavOnTouchDevices': true,
+            'albumLabel': 'Memory %1 of %2',
+            'fadeDuration': 300,
+            'imageFadeDuration': 300,
+            'showImageNumberLabel': true,
+            'positionFromTop': 100
+        });
+    </script>
+	
+	<script>
+	  function createHearts(x, y) {
+		  for (let i = 0; i < 10; i++) {
+			  const heart = document.createElement('div');
+			  heart.className = 'heart-animation';
+			  heart.innerHTML = '❤️';
+			  heart.style.left = x + 'px';
+			  heart.style.top = y + 'px';
+			  heart.style.position = 'fixed';
+			  heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+			  heart.style.color = '#ff4081';
+			  heart.style.animation = `heartFloat ${Math.random() * 1 + 0.5}s ease-out forwards`;
+			  heart.style.transform = `translate(${Math.random() * 40 - 20}px, ${Math.random() * 40 - 20}px)`;
+			  document.body.appendChild(heart);
+			  setTimeout(() => heart.remove(), 1500);
+		  }
+	  }
+	  function revealMessage() {
+		  const button = document.querySelector('.secret-button');
+		  const rect = button.getBoundingClientRect();
+		  createHearts(rect.left + rect.width/2, rect.top + rect.height/2);
+		  const message = document.getElementById('secretMessage');
+		  message.classList.add('visible');
+	  }
+		function toggleAlbum(header) {
+			const album = header.parentElement;
+			album.classList.toggle('active');
+			
+			// Close other albums when opening a new one
+			document.querySelectorAll('.album').forEach(otherAlbum => {
+				if (otherAlbum !== album) {
+					otherAlbum.classList.remove('active');
+				}
+			});
+		}
+	</script>
+
+	<script>
+	
+		window.addEventListener('load', () => {
+		document.querySelector('.loader').style.display = 'none';
+		});
+	
+		const anniversaryDate = new Date('2026-01-16').getTime();
+
+		function updateCountdown() {
+		  const now = new Date().getTime();
+		  const diff = anniversaryDate - now;
+		  
+		  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+		  document.getElementById('countdown-timer').innerHTML = `
+			${days} Days ❤️ 
+			${Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))} Hours
+		  `;
+		}
+
+		setInterval(updateCountdown, 1000);
+	
+		function openLetter() {
+			document.querySelector('.envelope').classList.add('open-envelope');
+			setTimeout(() => {
+			document.querySelector('.letter-content').style.display = 'block';
+			}, 1000);
+		}
+		
+		function toggleMemory(button) {
+			const content = button.previousElementSibling;
+			content.style.display = content.style.display === 'none' ? 'block' : 'none';
+			button.textContent = content.style.display === 'none' ? 'Reveal Memory' : 'Hide Memory';
+		}
+	
+		// Lightbox configuration
+		lightbox.option({
+			'resizeDuration': 200,
+			'wrapAround': true,
+			'alwaysShowNavOnTouchDevices': true,
+			'albumLabel': 'Memory %1 of %2',
+			'fadeDuration': 300,
+			'imageFadeDuration': 300,
+			'showImageNumberLabel': true,
+			'positionFromTop': 100
+		});
+
+		// Create floating hearts
+		function createHearts() {
+			const heartsContainer = document.getElementById('hearts');
+			for (let i = 0; i < 20; i++) {
+				const heart = document.createElement('div');
+				heart.className = 'heart';
+				heart.innerHTML = '❤️';
+				heart.style.left = Math.random() * 100 + '%';
+				heart.style.animationDelay = Math.random() * 5 + 's';
+				heartsContainer.appendChild(heart);
+			}
+		}
+
+
+
+		// Timeline animation on scroll
+		const timelineItems = document.querySelectorAll('.timeline-item');
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('visible');
+				}
+			});
+		}, { threshold: 0.5 });
+
+		timelineItems.forEach(item => observer.observe(item));
+
+		// Initialize floating hearts
+		createHearts();
+	</script>
+	
+	<script>
+		// Simple password protection
+		const password = prompt('Enter our special password:');
+		if (password !== '123') {
+			window.location.href = 'about:blank';
+		}
+	</script>
+	
+</body>
+</html>
